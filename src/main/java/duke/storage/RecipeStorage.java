@@ -62,25 +62,30 @@ public class RecipeStorage {
             String content = "";
             while ((content = bufferedReader.readLine()) != null) {
                 // can use a splitMethod() here for tidyness.
-                String recipeTitle, rating, prepStep, requiredIngredients, feedback, remaining, remaining2, remaining3;
+                String recipeIndex, recipeTitle, rating, prepStep, requiredIngredients, feedback, remaining, remaining1, remaining2, remaining3;
                 String[] split = content.split("\\|", 2);
                 if (split.length == 2) {
-                    recipeTitle = content.split("\\|", 2)[0];
-                    remaining = content.split("\\|", 2)[1];
-                    String[] split2 = remaining.split("\\|", 2);
-                    if (split2.length == 2) {
-                        rating = remaining.split("\\|", 2)[0];
-                        remaining2 = remaining.split("\\|", 2)[1];
-                        String[] split3 = remaining2.split("\\|", 2);
-                        if (split3.length == 2) {
-                            prepStep = remaining2.split("\\|", 2)[0];
-                            remaining3 = remaining2.split("\\|", 2)[1];
-                            String[] split4 = remaining3.split("\\|", 2);
-                            if (split4.length == 2) {
-                                requiredIngredients = remaining3.split("\\|", 2)[0];
-                                feedback = remaining3.split("\\|", 2)[1];
-                                Recipe recipe = new Recipe(recipeTitle, rating, prepStep, requiredIngredients, feedback);
-                                LHMRecipeList.put(new RecipeTitle(recipeTitle), recipe);
+                    recipeIndex = content.split("\\|", 2)[0];
+                    remaining1 = content.split("\\|", 2)[1];
+                    String[] split1 = remaining1.split("\\|", 2);
+                    if (split1.length == 2) {
+                        recipeTitle = content.split("\\|", 2)[0];
+                        remaining = content.split("\\|", 2)[1];
+                        String[] split2 = remaining.split("\\|", 2);
+                        if (split2.length == 2) {
+                            rating = remaining.split("\\|", 2)[0];
+                            remaining2 = remaining.split("\\|", 2)[1];
+                            String[] split3 = remaining2.split("\\|", 2);
+                            if (split3.length == 2) {
+                                prepStep = remaining2.split("\\|", 2)[0];
+                                remaining3 = remaining2.split("\\|", 2)[1];
+                                String[] split4 = remaining3.split("\\|", 2);
+                                if (split4.length == 2) {
+                                    requiredIngredients = remaining3.split("\\|", 2)[0];
+                                    feedback = remaining3.split("\\|", 2)[1];
+                                    Recipe recipe = new Recipe(recipeIndex, recipeTitle, rating, prepStep, requiredIngredients, feedback);
+                                    LHMRecipeList.put(new RecipeTitle(recipeTitle), recipe);
+                                }
                             }
                         }
                     }

@@ -1,6 +1,6 @@
 package duke.command.recipecommands;
 
-import duke.command.CommandRecipeIngredient;
+import duke.command.Command;
 import duke.exception.DukeException;
 import duke.list.recipelist.RecipeIngredientList;
 import duke.storage.RecipeIngredientStorage;
@@ -21,7 +21,7 @@ import static duke.common.RecipeMessages.MESSAGE_DELETE_RECIPE;
 /**
  * Handles the delete command and inherits all the fields and methods of Command parent class.
  */
-public class DeleteRecipeIngredientCommand extends CommandRecipeIngredient {
+public class DeleteRecipeIngredientCommand extends Command<RecipeIngredientList, Ui, RecipeIngredientStorage> {
 
     /**
      * Constructor for class DeleteCommand.
@@ -30,6 +30,11 @@ public class DeleteRecipeIngredientCommand extends CommandRecipeIngredient {
     public DeleteRecipeIngredientCommand(String userInput) {
         this.userInput = userInput;
     }
+
+//    @Override
+//    public ArrayList<String> execute(RecipeTitleList recipeTitleList, Ui ui, RecipeTitleStorage recipeTitleStorage) throws DukeException, ParseException {
+//        return null;
+//    }
 
     @Override
     public ArrayList<String> execute(RecipeIngredientList recipeIngredientList, Ui ui, RecipeIngredientStorage recipeIngredientStorage) throws DukeException, ParseException {

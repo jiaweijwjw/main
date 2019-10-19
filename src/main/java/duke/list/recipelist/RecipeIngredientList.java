@@ -41,6 +41,18 @@ public class RecipeIngredientList {
         System.out.println(MESSAGE_ADDED + "       " + recipeIngredientList.get(index - 1) + "\n" + MESSAGE_ITEMS1 + index + msg);
     }
 
+    public String toSaveString() {
+        String joinedString = "";
+        if (recipeIngredientList.isEmpty()) {
+            joinedString = "No required ingredient.";
+        }
+        for (RecipeIngredient recipeIngredient : recipeIngredientList) {
+            String.join(recipeIngredient.toSaveString(), joinedString);
+            String.join(" / ", joinedString);
+        }
+        return joinedString;
+    }
+
     // delete ingredient by index on list
     public void deleteIngredient(int i) {
         if (recipeIngredientList.size() - 1 <= 1) {

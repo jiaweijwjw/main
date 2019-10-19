@@ -16,8 +16,8 @@ public class Recipe {
         this.feedback = new Feedback();
     }
 
-    public Recipe(String recipeTitle, String rating, String prepStep, String requiredIngredients, String feedback) {
-        this.recipeTitle = new RecipeTitle(recipeTitle);
+    public Recipe(String recipeIndex, String recipeTitle, String rating, String prepStep, String requiredIngredients, String feedback) {
+        this.recipeTitle = new RecipeTitle(Integer.parseInt(recipeIndex), recipeTitle);
         this.rating = assignRating(rating);
         this.prepStep = new PrepStep(prepStep);
         this.requiredIngredients = new RequiredIngredients(requiredIngredients);

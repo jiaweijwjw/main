@@ -1,6 +1,7 @@
 package duke.command.recipecommands;
 
-import duke.command.CommandRecipe;
+import duke.command.Command;
+import duke.ui.Ui;
 import duke.list.recipelist.RecipeList;
 import duke.storage.RecipeStorage;
 import duke.task.recipetasks.Recipe;
@@ -16,7 +17,7 @@ import static duke.common.RecipeMessages.MESSAGE_HERE_ARE_THE_RECIPES;
 /**
  * Handles the list command and inherits all the fields and methods of Command parent class.
  */
-public class ListAllRecipeCommand extends CommandRecipe {
+public class ListAllRecipeCommand extends Command<RecipeList, Ui, RecipeStorage> {
 
     /**
      * Constructor for class ListCommand.
@@ -32,7 +33,8 @@ public class ListAllRecipeCommand extends CommandRecipe {
      * @param recipeStorage deals with loading tasks from the file and saving tasks in the file
      */
 
-    public ArrayList<String> execute(RecipeList recipeList, RecipeStorage recipeStorage) {
+    @Override
+    public ArrayList<String> execute(RecipeList recipeList, Ui ui, RecipeStorage recipeStorage) {
         System.out.println("went into execute");
         ArrayList<String> arrayList = new ArrayList<>();
         if (userInput.trim().equals(COMMAND_LIST_RECIPES)) {

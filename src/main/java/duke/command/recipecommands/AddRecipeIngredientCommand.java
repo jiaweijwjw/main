@@ -1,21 +1,44 @@
 package duke.command.recipecommands;
 
-import duke.command.CommandRecipeIngredient;
+import duke.command.Command;
 import duke.list.recipelist.RecipeIngredientList;
-
 import duke.storage.RecipeIngredientStorage;
+import duke.task.recipetasks.Recipe;
+import duke.task.recipetasks.RecipeTitle;
 import duke.ui.Ui;
 
 import java.text.ParseException;
-import java.util.ArrayList;
+import java.util.*;
 
 import static duke.common.Messages.*;
 import static duke.common.RecipeMessages.*;
 
-public class AddRecipeIngredientCommand extends CommandRecipeIngredient {
+public class AddRecipeIngredientCommand extends Command<RecipeIngredientList, Ui, RecipeIngredientStorage> {
 
     public AddRecipeIngredientCommand(String userInput) {
         this.userInput = userInput;
+    }
+
+    private ArrayList<String> listOfRecipes(LinkedHashMap<RecipeTitle, Recipe> map) {
+        Set entries = map.entrySet();
+        Iterator entryIter = entries.iterator();
+        ArrayList<String> arrayList = new ArrayList<>();
+        int i = 0;
+
+
+//        for (Map.Entry<RecipeTitle, Recipe> entry : map.entrySet()) {
+//            Recipe value = entry.getValue();
+//            RecipeTitle entryKey = entry.getKey();
+//        }
+
+        while (entryIter.hasNext()) {
+            Map.Entry entry = (Map.Entry) entryIter.next();
+            RecipeTitle key = (RecipeTitle) entry.getKey();  // Get the key from the entry.
+            Recipe value = (Recipe) entry.getValue();  // Get the value.
+            arrayList.add(Integer.toString(i + DISPLAYED_INDEX_OFFSET) + ". " + value.getRecipeTitle().getTitle());
+            i++;
+        }
+        return arrayList;
     }
 
     @Override

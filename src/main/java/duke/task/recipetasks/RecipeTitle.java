@@ -23,7 +23,7 @@ public class RecipeTitle {
     }
 
     public String toSaveString() {
-        return recipeTitle;
+        return index + " | " + recipeTitle;
     }
 
     public String toString() {

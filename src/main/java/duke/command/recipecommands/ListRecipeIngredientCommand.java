@@ -1,6 +1,6 @@
 package duke.command.recipecommands;
 
-import duke.command.CommandRecipeIngredient;
+import duke.command.Command;
 import duke.list.recipelist.RecipeIngredientList;
 import duke.storage.RecipeIngredientStorage;
 import duke.task.recipetasks.RecipeIngredient;
@@ -15,7 +15,7 @@ import static duke.common.RecipeMessages.ERROR_MESSAGE_INVALID_RECIPE_INDEX;
 /**
  * Handles the list command and inherits all the fields and methods of Command parent class.
  */
-public class ListRecipeIngredientCommand extends CommandRecipeIngredient {
+public class ListRecipeIngredientCommand extends Command<RecipeIngredientList, Ui, RecipeIngredientStorage> {
 
     /**
      * Constructor for class ListCommand.
